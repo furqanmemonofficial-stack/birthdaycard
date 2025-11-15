@@ -1,10 +1,10 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+ * {
+     margin: 0;
+    padding: 0;
+     box-sizing: border-box;
+    }
 
-        body {
+     body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
@@ -62,16 +62,31 @@
         }
 
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ff6b6b, #ffd93d, #4ecdc4, #6c5ce7);
-            background-size: 400%;
-           
-            -webkit-text-fill-color: transparent;
-            animation: gradient 3s ease infinite;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #ff6b6b, #ffd93d, #4ecdc4, #6c5ce7);
+    background-size: 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback for non-webkit browsers */
+    animation: gradient 3s ease infinite;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: inline-block;
+}
 
+/* Fallback for browsers that don't support background-clip:text */
+@supports not (background-clip: text) {
+    h1 {
+        background: none;
+        -webkit-text-fill-color: initial;
+        color: #ff6b6b; /* Fallback color */
+        text-shadow: 
+            2px 2px 4px rgba(0, 0, 0, 0.1),
+            0 0 10px rgba(255, 107, 107, 0.5);
+    }
+}
         @keyframes gradient {
             0% {
                 background-position: 0% 50%;
