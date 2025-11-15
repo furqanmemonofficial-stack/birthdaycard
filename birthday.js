@@ -1,119 +1,178 @@
- document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
             const celebrateBtn = document.getElementById('celebrateBtn');
-            const cardContainer = document.querySelector('.card-container');
-            const birthdayLoop = document.getElementById('birthdayLoop');
+            const balloonsContainer = document.getElementById('balloons');
             
-            // Birthday messages for the loop
-            const birthdayMessages = [
-                "Happy Birthday!",
-                "Wish you all the best!",
-                "Have a fantastic day!",
-                "Many happy returns!",
-                "Enjoy your special day!",
-                "Make a wish!",
-                "Blow out the candles!",
-                "Party time!",
-                "Celebrate!",
-                "You're amazing!",
-                "Best wishes!",
-                "Cheers to you!",
-                "Another year wiser!",
-                "Let's celebrate!",
-                "You deserve the best!"
-            ];
-            
-            // Create birthday message loop
-            function createBirthdayLoop() {
-                // Create multiple messages at different intervals
-                setInterval(() => {
-                    const message = document.createElement('div');
-                    message.className = 'birthday-message';
-                    
-                    // Random message from the array
-                    message.textContent = birthdayMessages[Math.floor(Math.random() * birthdayMessages.length)];
-                    
-                    // Random position and animation duration
-                    const startY = Math.random() * 80 + 10; // 10% to 90% of viewport height
-                    const duration = Math.random() * 15 + 15; // 15 to 30 seconds
-                    const fontSize = Math.random() * 1.5 + 1.5; // 1.5rem to 3rem
-                    const rotation = Math.random() * 360; // Random rotation
-                    
-                    message.style.top = startY + 'vh';
-                    message.style.fontSize = fontSize + 'rem';
-                    message.style.animationDuration = duration + 's';
-                    message.style.color = getRandomColor();
-                    message.style.transform = `rotate(${rotation}deg)`;
-                    
-                    birthdayLoop.appendChild(message);
-                    
-                    // Remove message after animation completes
-                    setTimeout(() => {
-                        message.remove();
-                    }, duration * 1000);
-                }, 800); // Create a new message every 800ms
-            }
-            
-            // Generate random color
-            function getRandomColor() {
-                const colors = [
-                    '#ff6b6b', '#48dbfb', '#1dd1a1', '#feca57', 
-                    '#ff9ff3', '#a29bfe', '#fd79a8', '#e17055'
-                ];
-                return colors[Math.floor(Math.random() * colors.length)];
-            }
-            
-            // Create confetti
-            function createConfetti() {
-                for (let i = 0; i < 100; i++) {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    
-                    // Random colors
-                    const colors = ['#ff6b6b', '#48dbfb', '#1dd1a1', '#feca57', '#ff9ff3', '#a29bfe'];
-                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    
-                    // Random position and size
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    confetti.style.width = Math.random() * 10 + 5 + 'px';
-                    confetti.style.height = Math.random() * 10 + 5 + 'px';
-                    
-                    // Random animation duration
-                    confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
-                    confetti.style.animationDelay = Math.random() * 2 + 's';
-                    
-                    document.body.appendChild(confetti);
-                    
-                    // Remove confetti after animation completes
-                    setTimeout(() => {
-                        confetti.remove();
-                    }, 5000);
+            // Create balloons
+            function createBalloons() {
+                const colors = ['#ff6b6b', '#4ecdc4', '#ffd93d', '#6c5ce7', '#a29bfe', '#00cec9'];
+                
+                for (let i = 0; i < 15; i++) {
+                    const balloon = document.createElement('div');
+                    balloon.className = 'balloon';
+                    balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    balloon.style.left = Math.random() * 100 + 'vw';
+                    balloon.style.animationDelay = Math.random() * 15 + 's';
+                    balloon.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                    balloonsContainer.appendChild(balloon);
                 }
             }
             
-            // Celebrate button click event
-            celebrateBtn.addEventListener('click', function() {
-                createConfetti();
-                
-                // Add a little shake animation to the card
-                cardContainer.style.animation = 'shake 0.5s';
-                setTimeout(() => {
-                    cardContainer.style.animation = '';
+            // Create sparkle effects
+            function createSparkles() {
+                setInterval(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = Math.random() * 100 + 'vw';
+                    sparkle.style.top = Math.random() * 100 + 'vh';
+                    sparkle.style.animationDelay = Math.random() * 2 + 's';
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        sparkle.remove();
+                    }, 2000);
                 }, 500);
-            });
+            }
             
-            // Add shake animation for CSS
+            // Create floating hearts
+            function createHearts() {
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.className = 'heart';
+                        heart.textContent = '💖';
+                        heart.style.left = Math.random() * 90 + 5 + 'vw';
+                        heart.style.animationDelay = Math.random() * 5 + 's';
+                        heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                        document.body.appendChild(heart);
+                        
+                        setTimeout(() => {
+                            heart.remove();
+                        }, 9000);
+                    }, i * 1000);
+                }
+            }
+            
+            // Create bouncing gift boxes
+            function createGiftBoxes() {
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const gift = document.createElement('div');
+                        gift.className = 'gift-box';
+                        gift.textContent = '🎁';
+                        gift.style.left = Math.random() * 90 + 5 + 'vw';
+                        gift.style.animationDelay = Math.random() * 2 + 's';
+                        gift.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                        document.body.appendChild(gift);
+                    }, i * 800);
+                }
+            }
+            
+            // Create enhanced confetti effect
+            function createConfetti() {
+                const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ff6b6b', '#4ecdc4', '#ffd93d'];
+                const shapes = ['circle', 'square', 'triangle'];
+                
+                for (let i = 0; i < 150; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.className = 'confetti';
+                        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                        confetti.style.left = Math.random() * 100 + 'vw';
+                        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                        confetti.style.animationDelay = Math.random() * 1 + 's';
+                        
+                        // Random shapes
+                        const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                        if (shape === 'triangle') {
+                            confetti.style.width = '0';
+                            confetti.style.height = '0';
+                            confetti.style.background = 'transparent';
+                            confetti.style.borderLeft = '8px solid transparent';
+                            confetti.style.borderRight = '8px solid transparent';
+                            confetti.style.borderBottom = `16px solid ${colors[Math.floor(Math.random() * colors.length)]}`;
+                        } else if (shape === 'square') {
+                            confetti.style.borderRadius = '2px';
+                        }
+                        
+                        document.body.appendChild(confetti);
+                        
+                        setTimeout(() => {
+                            confetti.remove();
+                        }, 5000);
+                    }, i * 20);
+                }
+            }
+            
+            // Create fireworks effect
+            function createFireworks() {
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => {
+                        createFirework(Math.random() * 80 + 10, Math.random() * 50 + 10);
+                    }, i * 400);
+                }
+            }
+            
+            function createFirework(x, y) {
+                const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        const particle = document.createElement('div');
+                        particle.style.position = 'absolute';
+                        particle.style.left = x + '%';
+                        particle.style.top = y + '%';
+                        particle.style.width = '6px';
+                        particle.style.height = '6px';
+                        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                        particle.style.borderRadius = '50%';
+                        particle.style.animation = `fireworkParticle 1.5s ease-out forwards`;
+                        document.body.appendChild(particle);
+                        
+                        setTimeout(() => {
+                            particle.remove();
+                        }, 1500);
+                    }, i * 30);
+                }
+            }
+            
+            // Add CSS for new animations
             const style = document.createElement('style');
             style.textContent = `
-                @keyframes shake {
-                    0% { transform: translateX(0); }
-                    25% { transform: translateX(-5px); }
-                    50% { transform: translateX(5px); }
-                    75% { transform: translateX(-5px); }
-                    100% { transform: translateX(0); }
+                @keyframes fireworkParticle {
+                    0% {
+                        transform: translate(0, 0) scale(0);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) scale(1);
+                        opacity: 0;
+                    }
                 }
             `;
             document.head.appendChild(style);
             
-            // Start the birthday message loop
-            createBirthdayLoop();
+            // Celebrate button functionality
+            celebrateBtn.addEventListener('click', function() {
+                createConfetti();
+                createFireworks();
+                
+                // Add celebration message
+                const message = document.querySelector('.message');
+                message.innerHTML = "🎉 Yay! Let's celebrate! 🎉<br><br>" + message.innerHTML;
+                
+                // Change button text temporarily
+                const originalText = celebrateBtn.textContent;
+                celebrateBtn.textContent = "Celebrating! 🎊";
+                celebrateBtn.disabled = true;
+                
+                setTimeout(() => {
+                    celebrateBtn.textContent = originalText;
+                    celebrateBtn.disabled = false;
+                }, 3000);
+            });
+            
+            // Initialize animations
+            createBalloons();
+            createSparkles();
+            createHearts();
+            createGiftBoxes();
         });
