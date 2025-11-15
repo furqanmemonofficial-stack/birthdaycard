@@ -66,7 +66,7 @@
             margin-bottom: 20px;
             background: linear-gradient(45deg, #ff6b6b, #ffd93d, #4ecdc4, #6c5ce7);
             background-size: 400%;
-            -webkit-background-clip: text;
+           
             -webkit-text-fill-color: transparent;
             animation: gradient 3s ease infinite;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
