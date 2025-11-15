@@ -84,23 +84,13 @@
             pointer-events: none;
         }
 
-        .balloon {
-            position: absolute;
-            width: 50px;
-            height: 60px;
-            border-radius: 50%;
-            animation: float 15s infinite ease-in-out;
-        }
-
-        .balloon:before {
-            content: "";
-            position: absolute;
-            width: 2px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.7);
-            top: 60px;
-            left: 24px;
-        }
+.balloon {
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+    animation: floatBalloon 3s ease-in-out infinite;
+}
 
         .balloon:nth-child(1) {
             background: #ff6b6b;
