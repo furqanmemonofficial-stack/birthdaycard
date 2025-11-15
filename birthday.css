@@ -91,7 +91,6 @@ body {
     background: linear-gradient(45deg, #ff6b6b, #ffd93d);
     color: white;
     text-align: center;
-    overflow: hidden;
 }
 
 /* Enhanced Balloons animation */
@@ -109,7 +108,6 @@ body {
     border-radius: 50%;
     position: relative;
     animation: floatBalloon 3s ease-in-out infinite;
-    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
 }
 
 .balloon:nth-child(1) { 
@@ -144,80 +142,26 @@ body {
     background: rgba(0,0,0,0.2);
 }
 
-.balloon::before {
-    content: '🎈';
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 12px;
-}
-
 @keyframes floatBalloon {
     0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    25% {
-        transform: translateY(-15px) rotate(-2deg);
+        transform: translateY(0px);
     }
     50% {
-        transform: translateY(-25px) rotate(2deg);
-    }
-    75% {
-        transform: translateY(-15px) rotate(-1deg);
+        transform: translateY(-20px);
     }
 }
 
-/* Colorful pieces of paper */
-.colorful-paper {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    opacity: 0.8;
-    animation: paperFloat 6s linear infinite;
-    border-radius: 2px;
-}
-
-@keyframes paperFloat {
-    0% {
-        transform: translateY(100vh) rotate(0deg) scale(0);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.8;
-        transform: translateY(90vh) rotate(90deg) scale(1);
-    }
-    90% {
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(-100px) rotate(360deg) scale(0);
-        opacity: 0;
-    }
-}
-
-/* Enhanced Birthday text animation */
+/* Birthday text animation */
 .birthday-text {
     font-size: 2.5rem;
     margin-bottom: 30px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    animation: bounce 2s infinite, glow 2s ease-in-out infinite alternate;
+    animation: bounce 2s infinite;
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     background-size: 400%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradient 3s linear infinite, bounce 2s infinite, glow 2s ease-in-out infinite alternate;
-    position: relative;
-    z-index: 3;
-}
-
-@keyframes glow {
-    from {
-        filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
-    }
-    to {
-        filter: drop-shadow(0 0 20px rgba(255,255,255,0.8));
-    }
+    animation: gradient 3s linear infinite, bounce 2s infinite;
 }
 
 @keyframes bounce {
@@ -225,10 +169,10 @@ body {
         transform: translateY(0);
     }
     40% {
-        transform: translateY(-15px);
+        transform: translateY(-10px);
     }
     60% {
-        transform: translateY(-7px);
+        transform: translateY(-5px);
     }
 }
 
@@ -244,21 +188,11 @@ body {
     }
 }
 
-/* Enhanced Cake animation */
+/* Cake animation */
 .cake {
     position: relative;
     margin: 20px 0;
-    animation: wiggle 2s ease-in-out infinite, float 4s ease-in-out infinite;
-    filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.3));
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+    animation: wiggle 2s ease-in-out infinite;
 }
 
 .cake-base {
@@ -266,19 +200,6 @@ body {
     height: 40px;
     background: linear-gradient(45deg, #8B4513, #D2691E);
     border-radius: 10px 10px 0 0;
-    position: relative;
-    overflow: hidden;
-}
-
-.cake-base::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-    animation: shimmer 2s infinite;
 }
 
 .cake-middle {
@@ -287,19 +208,6 @@ body {
     background: linear-gradient(45deg, #FFB6C1, #FF69B4);
     margin: 0 auto;
     border-radius: 8px 8px 0 0;
-    position: relative;
-    overflow: hidden;
-}
-
-.cake-middle::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-    animation: shimmer 2s infinite 0.5s;
 }
 
 .cake-top {
@@ -308,46 +216,14 @@ body {
     background: linear-gradient(45deg, #98FB98, #32CD32);
     margin: 0 auto;
     border-radius: 6px 6px 0 0;
-    position: relative;
-    overflow: hidden;
-}
-
-.cake-top::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-    animation: shimmer 2s infinite 1s;
-}
-
-@keyframes shimmer {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
 }
 
 .candle {
     width: 6px;
     height: 25px;
-    background: linear-gradient(to bottom, #fff, #ffeb3b);
+    background: #fff;
     margin: 0 auto;
     position: relative;
-    animation: candleFlicker 3s ease-in-out infinite;
-}
-
-@keyframes candleFlicker {
-    0%, 100% {
-        transform: rotate(-1deg);
-    }
-    50% {
-        transform: rotate(1deg);
-    }
 }
 
 .flame {
@@ -356,75 +232,45 @@ body {
     background: linear-gradient(45deg, #fffb00, #ff0000);
     border-radius: 50% 50% 20% 20%;
     margin: 0 auto;
-    animation: flicker 0.3s infinite alternate, flameGlow 1s infinite alternate;
-    filter: blur(1px) drop-shadow(0 0 10px #ff0000);
+    animation: flicker 0.5s infinite alternate;
+    filter: blur(1px);
 }
 
 @keyframes flicker {
     0% {
-        transform: scale(1) skew(0deg);
+        transform: scale(1);
         opacity: 1;
     }
-    25% {
-        transform: scale(1.1) skew(2deg);
-    }
-    50% {
-        transform: scale(0.9) skew(-2deg);
-    }
-    75% {
-        transform: scale(1.05) skew(1deg);
-    }
     100% {
-        transform: scale(1) skew(0deg);
-        opacity: 0.9;
-    }
-}
-
-@keyframes flameGlow {
-    0% {
-        box-shadow: 0 0 10px #ff0000, 0 0 20px #ff4500;
-    }
-    100% {
-        box-shadow: 0 0 15px #ff0000, 0 0 30px #ff4500, 0 0 40px #ff6347;
+        transform: scale(1.1);
+        opacity: 0.8;
     }
 }
 
 @keyframes wiggle {
     0%, 100% {
-        transform: rotate(-3deg);
+        transform: rotate(-2deg);
     }
     50% {
-        transform: rotate(3deg);
+        transform: rotate(2deg);
     }
 }
 
 .card-front p {
     margin-top: 20px;
     font-size: 1.2rem;
-    animation: pulse 2s infinite, slideInOut 4s ease-in-out infinite;
-}
-
-@keyframes slideInOut {
-    0%, 100% {
-        transform: translateX(-10px);
-    }
-    50% {
-        transform: translateX(10px);
-    }
+    animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
     0% {
         opacity: 0.7;
-        text-shadow: 0 0 5px rgba(255,255,255,0.5);
     }
     50% {
         opacity: 1;
-        text-shadow: 0 0 15px rgba(255,255,255,0.8);
     }
     100% {
         opacity: 0.7;
-        text-shadow: 0 0 5px rgba(255,255,255,0.5);
     }
 }
 
@@ -434,54 +280,19 @@ body {
     color: white;
     transform: rotateY(180deg);
     text-align: center;
-    overflow: hidden;
 }
 
 .card-back h2 {
     font-size: 2rem;
     margin-bottom: 20px;
-    animation: slideIn 1s ease-out, textGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes textGlow {
-    from {
-        text-shadow: 0 0 10px rgba(255,255,255,0.5);
-    }
-    to {
-        text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6);
-    }
+    animation: slideIn 1s ease-out;
 }
 
 .message {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 30px;
-    animation: fadeIn 2s ease-in, typewriter 3s steps(40) 1s both;
-    position: relative;
-}
-
-@keyframes typewriter {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
-
-.message::after {
-    content: '|';
-    animation: blink 1s infinite;
-    margin-left: 2px;
-}
-
-@keyframes blink {
-    0%, 50% {
-        opacity: 1;
-    }
-    51%, 100% {
-        opacity: 0;
-    }
+    animation: fadeIn 2s ease-in;
 }
 
 #celebrateBtn {
@@ -548,102 +359,23 @@ body {
     }
 }
 
-/* Enhanced Confetti animation */
+/* Confetti animation for celebration */
 .confetti {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
+    background: #f00;
     animation: confettiFall 5s linear infinite;
-    border-radius: 50%;
-    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
 }
 
 @keyframes confettiFall {
     0% {
-        transform: translateY(-100px) rotate(0deg) scale(0);
-        opacity: 1;
-    }
-    10% {
-        transform: translateY(0) rotate(180deg) scale(1);
-    }
-    90% {
+        transform: translateY(-100px) rotate(0deg);
         opacity: 1;
     }
     100% {
-        transform: translateY(100vh) rotate(720deg) scale(0);
+        transform: translateY(100vh) rotate(360deg);
         opacity: 0;
-    }
-}
-
-/* New Sparkle effects */
-.sparkle {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: white;
-    border-radius: 50%;
-    animation: sparkle 2s linear infinite;
-    filter: drop-shadow(0 0 5px gold);
-}
-
-@keyframes sparkle {
-    0%, 100% {
-        transform: scale(0) rotate(0deg);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1) rotate(180deg);
-        opacity: 1;
-    }
-}
-
-/* Floating hearts */
-.heart {
-    position: absolute;
-    font-size: 1.5rem;
-    animation: heartFloat 6s linear infinite;
-    opacity: 0.7;
-}
-
-@keyframes heartFloat {
-    0% {
-        transform: translateY(100vh) rotate(0deg) scale(0);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.7;
-        transform: translateY(90vh) rotate(90deg) scale(1);
-    }
-    90% {
-        opacity: 0.7;
-    }
-    100% {
-        transform: translateY(-100px) rotate(360deg) scale(0);
-        opacity: 0;
-    }
-}
-
-/* Bouncing gift boxes */
-.gift-box {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    animation: bounceGift 4s ease-in-out infinite;
-    font-size: 1.2rem;
-}
-
-@keyframes bounceGift {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    25% {
-        transform: translateY(-20px) rotate(-10deg);
-    }
-    50% {
-        transform: translateY(-40px) rotate(10deg);
-    }
-    75% {
-        transform: translateY(-20px) rotate(-5deg);
     }
 }
 
